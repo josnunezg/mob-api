@@ -4,3 +4,6 @@ AllCops:
     - Gemfile
     - config/**/*
     - db/**/*
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
