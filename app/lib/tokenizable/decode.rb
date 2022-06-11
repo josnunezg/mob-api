@@ -13,6 +13,9 @@ module Tokenizable
       return if token.nil?
 
       @user ||= ::User.find_by(id: user_id)
+    rescue StandardError => e
+      Rails.logger.error e
+      nil
     end
 
     def decoded
