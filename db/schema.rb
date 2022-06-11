@@ -43,6 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_10_023428) do
   create_table "expenses", force: :cascade do |t|
     t.text "note"
     t.integer "amount"
+    t.date "perceived_at"
     t.bigint "category_id", null: false
     t.bigint "budget_id", null: false
     t.datetime "created_at", null: false
@@ -54,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_10_023428) do
   create_table "incomes", force: :cascade do |t|
     t.text "note"
     t.integer "amount"
+    t.date "perceived_at"
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
