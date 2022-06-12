@@ -84,5 +84,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  Rails.application.config.hosts << ENV['FRONT_APP_URL']
+  config.hosts.clear
 end
