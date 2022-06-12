@@ -1,9 +1,8 @@
 module Users
   class LoginService
     include Interactor
-    include ::FindUserByEmail
 
-    delegate :user, :password, to: :context
+    delegate :email, :password, to: :context
 
     def call
       context.fail!(error: Error.unauthorized('login')) unless user.authenticate(password)
@@ -14,6 +13,12 @@ module Users
 
     def generator
       @generator ||= Tokenizable::Generate.new(user)
+    end
+
+    def user
+      @user ||= ::User.find_by!(email: email)
+    rescue ActiveRecord::RecordNotFound
+      context.fail!(error: Error.record_not_found('User', 'email', email))
     end
   end
 end
